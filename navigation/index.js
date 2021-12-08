@@ -11,6 +11,14 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
 
+import { SignIn } from "../screens/SignIn";
+import { SignUp } from "../screens/SignUp";
+import { UpdateProfile } from "../screens/UpdateProfile";
+import { UserPage } from "../screens/UserPage";
+import { Posts } from "../screens/Posts";
+import { NewPost } from "../screens/NewPost";
+import { CurrentUserPage } from "../screens/currentUserPage";
+
 export default function Navigation({ colorScheme }) {
   return (
     <NavigationContainer
@@ -22,19 +30,27 @@ export default function Navigation({ colorScheme }) {
   );
 }
 
-// A root stack navigator is often used for displaying modals on top of all other content
-// Read more here: https://reactnavigation.org/docs/modal
 const Stack = createStackNavigator();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+    <Stack.Navigator
+      initialRouteName="sign-in"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen component={SignIn} name="sign-in" />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
       />
+       <Stack.Screen component={SignUp} name="sign-up" />
+       <Stack.Screen component={UpdateProfile} name="update-profile" />
+       <Stack.Screen component={UserPage} name="user-page" />
+       <Stack.Screen component={Posts} name="newsfeed" />
+       <Stack.Screen component={NewPost} name="new-post" />
+       <Stack.Screen component={CurrentUserPage} name="current-user-page" />
+      <Stack.Screen name="Root" component={BottomTabNavigator} />
     </Stack.Navigator>
   );
 }

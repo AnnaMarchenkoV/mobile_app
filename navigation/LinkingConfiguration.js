@@ -9,6 +9,9 @@ export default {
   prefixes: [Linking.createURL("/")],
   config: {
     screens: {
+      NotFound: "*",
+      SignIn: 'sign-in',
+      SignUp: 'sign-up',
       Root: {
         screens: {
           TabOne: {
@@ -23,7 +26,6 @@ export default {
           },
         },
       },
-      NotFound: "*",
     },
   },
 };
